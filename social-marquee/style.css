@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.container {
+    text-align: center;
+    padding: 40px;
+}
+
+.container h1 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.container .hint {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    margin-bottom: 40px;
+}
+
+/* From Uiverse.io by barisdogansutcu */
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 15px;
+    width: 300px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+}
+
+.content::before {
+    content: "";
+    position: absolute;
+    left: 0%;
+    top: 50%;
+    transform: translateY(-50%);
+    bottom: 0;
+    width: 40px;
+    height: 96px;
+    background-image: linear-gradient(90deg, rgba(0,0,0,0.11), transparent);
+    z-index: 2;
+    border-radius: 10px 0 0 10px;
+}
+
+.content::after {
+    content: "";
+    position: absolute;
+    right: 0%;
+    top: 50%;
+    transform: translateY(-50%);
+    bottom: 0;
+    width: 40px;
+    height: 96px;
+    background-image: linear-gradient(-90deg, rgba(0,0,0,0.11), transparent);
+    z-index: 9;
+    border-radius: 0 10px 10px 0;
+}
+
+.basic-marquee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.basic-marquee .button {
+    transition: all 0.3s ease;
+}
+
+.basic-marquee .button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.basic-marquee-1 {
+    animation: marquee 15s linear infinite;
+}
+
+.basic-marquee-2 {
+    animation: marquee 21s linear infinite;
+}
+
+.benefits {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    min-width: 900px;
+    height: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    position: absolute;
+    inset: 0;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(-10%); }
+    100% { transform: translateX(-50%); }
+}
+
+.basic-marquee svg {
+    width: 40px;
+}
+
+.basic-marquee button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cls-1 { fill: #1ab7ea; }
+.cls-1, .cls-2 { fill-rule: evenodd; }
+.cls-2 { fill: #fff; }
+.cls-3 { fill: #ee8208; fill-rule: evenodd; }
+.cls-4 { fill: #fff; }
+.cls-7 { fill: #0a66c2; }
+.cls-7, .cls-8 { fill-rule: evenodd; }
+.cls-8 { fill: #fff; }
+.cls-10 { fill: #fff; }
+.cls-11 { fill: #1da1f2; }
+.cls-11, .cls-12 { fill-rule: evenodd; }
+.cls-12 { fill: #fff; }
+.cls-13 { fill: #ea4c89; }
+.cls-13, .cls-14 { fill-rule: evenodd; }
+.cls-14 { fill: #fff; }
+.cls-15 { fill: #1769ff; }
+.cls-15, .cls-16 { fill-rule: evenodd; }
+.cls-16 { fill: #fff; }
+.cls-17 { fill: #f26522; }
+.cls-17, .cls-18 { fill-rule: evenodd; }
+.cls-18 { fill: #fff; }
