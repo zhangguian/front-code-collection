@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Model Reveal Effect</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>3D Model Reveal Effect</h1>
+        <p class="hint">鼠标移入卡片并移动，查看效果</p>
+        
+        <div class="mode-selector">
+            <button class="mode-btn active" data-mode="spotlight">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <circle cx="12" cy="12" r="4"/>
+                </svg>
+                手电筒
+            </button>
+            <button class="mode-btn" data-mode="sweep">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+                横扫
+            </button>
+        </div>
+        
+        <div class="card-wrapper">
+            <div class="card" id="revealCard">
+                <!-- 灰色模型图层 -->
+                <div class="layer gray-layer"></div>
+                <!-- 彩色纹理图层 -->
+                <div class="layer color-layer" id="colorLayer"></div>
+                
+                <!-- 信息按钮 -->
+                <button class="info-btn" aria-label="信息">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 16v-4M12 8h.01"/>
+                    </svg>
+                </button>
+                
+                <!-- 收藏按钮 -->
+                <button class="fav-btn" aria-label="收藏">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                </button>
+                
+                <!-- 底部信息 -->
+                <div class="card-footer">
+                    <div class="user-info">
+                        <img src="https://studio.cdn.tripo3d.com/tripo-studio/20260327/da62cad5-7ea9-4d68-99b1-106f39be95dd/input.png?auth_key=1783296000-usFe4RVK-0-7b1f640cb6e5a9d3619713a74c451597" alt="avatar" class="avatar">
+                        <span class="username">TRIPO</span>
+                    </div>
+                    <div class="like-info">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                        <span>5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

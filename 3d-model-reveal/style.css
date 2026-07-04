@@ -1,0 +1,199 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.container {
+    text-align: center;
+    padding: 40px;
+}
+
+h1 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.hint {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.mode-selector {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.mode-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mode-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.mode-btn.active {
+    background: rgba(99, 102, 241, 0.3);
+    border-color: #6366f1;
+    color: #fff;
+}
+
+.mode-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.card-wrapper {
+    display: inline-block;
+}
+
+.card {
+    width: 280px;
+    height: 373px;
+    border-radius: 16px;
+    background: #2a2a2a;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.layer {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.gray-layer {
+    background-image: url("https://studio.cdn.tripo3d.com/importer/c404eb08-51f5-4ec3-8704-1309eef5dfe3/studio_mesh_gray.webp?auth_key=1783296000-usFe4RVK-0-2884c9bb10cf83aa0810302d14bcdfd6");
+}
+
+.color-layer {
+    background-image: url("https://studio.cdn.tripo3d.com/importer/c404eb08-51f5-4ec3-8704-1309eef5dfe3/studio_mesh.webp?auth_key=1783296000-usFe4RVK-0-5d87170295282ebb2078ce81fbbed4d7");
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transition: clip-path 0.1s ease-out;
+}
+
+.card:hover .color-layer {
+    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+}
+
+.info-btn,
+.fav-btn {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease, background 0.2s ease;
+    backdrop-filter: blur(4px);
+}
+
+.card:hover .info-btn,
+.card:hover .fav-btn {
+    opacity: 1;
+}
+
+.info-btn {
+    top: 12px;
+    left: 12px;
+}
+
+.fav-btn {
+    top: 12px;
+    right: 12px;
+}
+
+.info-btn:hover,
+.fav-btn:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.info-btn svg,
+.fav-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.card-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.username {
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.like-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #fff;
+    font-size: 0.85rem;
+}
+
+.like-info svg {
+    width: 18px;
+    height: 18px;
+}
