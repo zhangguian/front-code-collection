@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glow Button</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- SVG滤镜 -->
+    <svg style="position: absolute; width: 0; height: 0;">
+        <filter width="3000%" x="-1000%" height="3000%" y="-1000%" id="unopaq">
+            <feColorMatrix
+                values="1 0 0 0 0 
+                        0 1 0 0 0 
+                        0 0 1 0 0 
+                        0 0 0 3 0"
+            ></feColorMatrix>
+        </filter>
+    </svg>
+
+    <div class="container">
+        <h1>Glow Button</h1>
+        <p class="hint">悬停查看发光边框效果</p>
+        
+        <div class="button-wrapper">
+            <div class="backdrop"></div>
+            <button class="button">
+                <div class="a l"></div>
+                <div class="a r"></div>
+                <div class="a t"></div>
+                <div class="a b"></div>
+                <div class="text">Button</div>
+            </button>
+        </div>
+    </div>
+</body>
+</html>
