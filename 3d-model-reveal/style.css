@@ -96,17 +96,12 @@ h1 {
     background-repeat: no-repeat;
 }
 
-.gray-layer {
-    background-image: url("https://studio.cdn.tripo3d.com/importer/c404eb08-51f5-4ec3-8704-1309eef5dfe3/studio_mesh_gray.webp?auth_key=1783296000-usFe4RVK-0-2884c9bb10cf83aa0810302d14bcdfd6");
-}
-
 .color-layer {
-    background-image: url("https://studio.cdn.tripo3d.com/importer/c404eb08-51f5-4ec3-8704-1309eef5dfe3/studio_mesh.webp?auth_key=1783296000-usFe4RVK-0-5d87170295282ebb2078ce81fbbed4d7");
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    transition: clip-path 0.1s ease-out;
+    background-image: url("images/color.webp");
 }
 
-.card:hover .color-layer {
+.gray-layer {
+    background-image: url("images/gray.webp");
     clip-path: polygon(0 0, 0 0, 0 0, 0 0);
 }
 

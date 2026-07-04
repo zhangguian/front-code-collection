@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const card = document.getElementById('revealCard');
-    const colorLayer = document.getElementById('colorLayer');
+    const grayLayer = document.getElementById('grayLayer');
     const modeBtns = document.querySelectorAll('.mode-btn');
     
     // 当前模式
@@ -56,16 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return { x: clipX, y: clipY };
     }
     
-    // 横扫模式 - 水平擦除
+    // 横扫模式 - 从左往右擦除
     function sweepClipPath(mouseX, rect) {
         const mouseXRelative = mouseX - rect.left;
-        const mouseXPercent = (mouseXRelative / rect.width) * 100;
-        const halfWidth = config.sweep.width / 2;
+        const sweepPercent = Math.max(0, Math.min(100, (mouseXRelative / rect.width) * 100));
         
-        const left = Math.max(0, mouseXPercent - halfWidth);
-        const right = Math.min(100, mouseXPercent + halfWidth);
-        
-        return `polygon(0 0, ${right}% 0, ${right}% 100%, 0 100%, 0 0, ${left}% 0, ${left}% 100%, 0 100%)`;
+        return `polygon(0 0, ${sweepPercent}% 0, ${sweepPercent}% 100%, 0 100%)`;
     }
     
     // 更新 clip-path
@@ -81,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clipPath = sweepClipPath(e.clientX, rect);
         }
         
-        colorLayer.style.clipPath = clipPath;
+        grayLayer.style.clipPath = clipPath;
     }
     
     // 模式切换
@@ -93,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // 重置颜色图层
             if (!isHovering) {
-                colorLayer.style.clipPath = 'polygon(0 0, 100% 0, 100% 100%, 0 100%)';
+                grayLayer.style.clipPath = 'polygon(0 0, 0 0, 0 0, 0 0)';
             }
         });
     });
@@ -121,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
     card.addEventListener('mouseleave', () => {
         isHovering = false;
         card.classList.remove('hovering');
-        colorLayer.style.clipPath = 'polygon(0 0, 100% 0, 100% 100%, 0 100%)';
+        grayLayer.style.clipPath = 'polygon(0 0, 0 0, 0 0, 0 0)';
         
         if (animationFrameId) {
             cancelAnimationFrame(animationFrameId);
@@ -142,6 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     card.addEventListener('touchend', () => {
         isHovering = false;
-        colorLayer.style.clipPath = 'polygon(0 0, 100% 0, 100% 100%, 0 100%)';
+        grayLayer.style.clipPath = 'polygon(0 0, 0 0, 0 0, 0 0)';
     });
 });
