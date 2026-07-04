@@ -1,0 +1,435 @@
+/* From Uiverse.io by mamyapro123 */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.container {
+    text-align: center;
+    padding: 40px;
+}
+
+.container h1 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.container .hint {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    margin-bottom: 40px;
+}
+
+.thermo-card {
+    --temp-color: #00d9ff;
+    --temp-glow: rgba(0, 217, 255, 0.58);
+    --fill-height: 0%;
+    --knob-top: 216px;
+    --temp-text: "30°";
+    --status-text: "COLD";
+    --card-width: 214px;
+    --card-height: 405px;
+
+    width: min(100%, var(--card-width));
+    height: var(--card-height);
+    max-width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 42px;
+    padding: 28px 20px 24px;
+    margin: 0 auto;
+
+    background: radial-gradient(
+        circle at 50% 0%,
+        rgba(255, 255, 255, 0.09),
+        transparent 38%
+    ),
+    linear-gradient(145deg, #25272e, #15171d);
+
+    box-shadow:
+        0 35px 65px rgba(0, 0, 0, 0.42),
+        inset 0 1px 1px rgba(255, 255, 255, 0.14),
+        inset 0 -24px 38px rgba(0, 0, 0, 0.28);
+}
+
+.thermo-card,
+.thermo-card .thermo-ui,
+.thermo-card .thermo-body,
+.thermo-card .thermo-track,
+.thermo-card .thermo-mercury,
+.thermo-card .thermo-knob,
+.thermo-card .thermo-click-zone,
+.thermo-card .thermo-hit,
+.thermo-card .thermo-scale,
+.thermo-card .thermo-mark,
+.thermo-card .thermo-mark span,
+.thermo-card .thermo-readout,
+.thermo-card .thermo-value,
+.thermo-card .thermo-label,
+.thermo-card .thermo-status,
+.thermo-card .thermo-state {
+    box-sizing: border-box;
+}
+
+.thermo-card .thermo-state {
+    display: none;
+}
+
+.thermo-card .thermo-ui {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.thermo-card .thermo-body {
+    position: relative;
+    width: 74px;
+    height: 238px;
+    border-radius: 999px;
+    background: rgba(8, 10, 13, 0.76);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px) saturate(170%);
+    -webkit-backdrop-filter: blur(16px) saturate(170%);
+    box-shadow:
+        0 18px 30px rgba(0, 0, 0, 0.58),
+        inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.thermo-card .thermo-body::before {
+    content: "";
+    position: absolute;
+    inset: -18px;
+    border-radius: inherit;
+    background: radial-gradient(
+        circle at 50% 60%,
+        var(--temp-color),
+        transparent 65%
+    );
+    opacity: 0.34;
+    filter: blur(20px);
+    z-index: -1;
+    transition: 0.35s ease;
+}
+
+.thermo-card .thermo-body::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: repeating-radial-gradient(
+        circle at 30% 40%,
+        rgba(255, 255, 255, 0.08) 0,
+        transparent 2px
+    );
+    opacity: 0.06;
+    pointer-events: none;
+}
+
+.thermo-card .thermo-track {
+    position: absolute;
+    top: 22px;
+    bottom: 22px;
+    left: 50%;
+    width: 22px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #10151c, #050608);
+    box-shadow:
+        inset 0 4px 10px rgba(0, 0, 0, 0.92),
+        inset 0 -2px 4px rgba(255, 255, 255, 0.05),
+        0 12px 24px rgba(0, 0, 0, 0.58);
+}
+
+.thermo-card .thermo-mercury {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--fill-height);
+    border-radius: 999px;
+    background: var(--temp-color);
+    box-shadow:
+        0 0 18px var(--temp-color),
+        0 0 38px var(--temp-color),
+        inset 0 -3px 6px rgba(255, 255, 255, 0.68);
+    transition:
+        height 0.42s cubic-bezier(0.19, 1, 0.22, 1),
+        background 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.thermo-card .thermo-mercury::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 14px;
+    background: radial-gradient(
+        circle at 50% 0%,
+        rgba(255, 255, 255, 0.82),
+        transparent 72%
+    );
+    filter: blur(4px);
+}
+
+.thermo-card .thermo-knob {
+    position: absolute;
+    left: 50%;
+    top: var(--knob-top);
+    width: 40px;
+    height: 40px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 8;
+    background: radial-gradient(
+        circle at 34% 28%,
+        rgba(255, 255, 255, 0.34),
+        transparent 32%
+    ),
+    linear-gradient(145deg, #555864, #181a21);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow:
+        0 11px 22px rgba(0, 0, 0, 0.72),
+        0 0 16px var(--temp-glow),
+        inset 0 2px 5px rgba(255, 255, 255, 0.22),
+        inset 0 -5px 8px rgba(0, 0, 0, 0.65);
+    transition:
+        top 0.42s cubic-bezier(0.19, 1, 0.22, 1),
+        box-shadow 0.35s ease;
+}
+
+.thermo-card .thermo-click-zone {
+    position: absolute;
+    top: 22px;
+    left: 50%;
+    width: 74px;
+    height: 194px;
+    transform: translateX(-50%);
+    z-index: 12;
+}
+
+.thermo-card .thermo-hit {
+    position: absolute;
+    left: 50%;
+    width: 74px;
+    height: 24.25px;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+
+.thermo-card .thermo-hit:hover {
+    background: radial-gradient(circle, var(--temp-glow), transparent 70%);
+}
+
+.thermo-card .hit-110 { top: -12.125px; }
+.thermo-card .hit-100 { top: 12.125px; }
+.thermo-card .hit-90 { top: 36.375px; }
+.thermo-card .hit-80 { top: 60.625px; }
+.thermo-card .hit-70 { top: 84.875px; }
+.thermo-card .hit-60 { top: 109.125px; }
+.thermo-card .hit-50 { top: 133.375px; }
+.thermo-card .hit-40 { top: 157.625px; }
+.thermo-card .hit-30 { top: 181.875px; }
+
+.thermo-card .thermo-scale {
+    position: absolute;
+    top: 22px;
+    left: -44px;
+    width: 38px;
+    height: 194px;
+    pointer-events: none;
+}
+
+.thermo-card .thermo-mark {
+    position: absolute;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+    font-size: 8px;
+    font-weight: 800;
+    color: rgba(210, 245, 255, 0.84);
+    text-shadow:
+        0 0 6px var(--temp-color),
+        0 0 12px var(--temp-glow);
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.thermo-card .thermo-mark span {
+    width: 10px;
+    height: 2px;
+    border-radius: 99px;
+    background: rgba(220, 250, 255, 0.88);
+    box-shadow: 0 0 8px var(--temp-color);
+}
+
+.thermo-card .mark-110 { top: 0px; }
+.thermo-card .mark-100 { top: 24.25px; }
+.thermo-card .mark-90 { top: 48.5px; }
+.thermo-card .mark-80 { top: 72.75px; }
+.thermo-card .mark-70 { top: 97px; }
+.thermo-card .mark-60 { top: 121.25px; }
+.thermo-card .mark-50 { top: 145.5px; }
+.thermo-card .mark-40 { top: 169.75px; }
+.thermo-card .mark-30 { top: 194px; }
+
+.thermo-card .thermo-readout {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.thermo-card .thermo-value {
+    font-size: 2.15rem;
+    font-weight: 900;
+    line-height: 1;
+    color: #ffffff;
+    text-shadow:
+        0 0 12px var(--temp-color),
+        0 0 28px var(--temp-glow);
+    filter: drop-shadow(0 0 10px var(--temp-glow));
+}
+
+.thermo-card .thermo-value::after {
+    content: var(--temp-text);
+}
+
+.thermo-card .thermo-label {
+    margin-top: 10px;
+    font-size: 0.52rem;
+    font-weight: 700;
+    letter-spacing: 0.38em;
+    color: rgba(215, 225, 235, 0.55);
+}
+
+.thermo-card .thermo-status {
+    margin-top: 8px;
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    color: var(--temp-color);
+    text-shadow:
+        0 0 8px var(--temp-color),
+        0 0 16px var(--temp-glow);
+}
+
+.thermo-card .thermo-status::after {
+    content: var(--status-text);
+}
+
+/* STATES */
+.thermo-card #thermo-t30:checked ~ .thermo-ui {
+    --temp-color: #00d9ff;
+    --temp-glow: rgba(0, 217, 255, 0.58);
+    --fill-height: 0%;
+    --knob-top: 216px;
+    --temp-text: "30°";
+    --status-text: "COLD";
+}
+
+.thermo-card #thermo-t40:checked ~ .thermo-ui {
+    --temp-color: #00d9ff;
+    --temp-glow: rgba(0, 217, 255, 0.58);
+    --fill-height: 12.5%;
+    --knob-top: 191.75px;
+    --temp-text: "40°";
+    --status-text: "COLD";
+}
+
+.thermo-card #thermo-t50:checked ~ .thermo-ui {
+    --temp-color: #00d9ff;
+    --temp-glow: rgba(0, 217, 255, 0.58);
+    --fill-height: 25%;
+    --knob-top: 167.5px;
+    --temp-text: "50°";
+    --status-text: "COLD";
+}
+
+.thermo-card #thermo-t60:checked ~ .thermo-ui {
+    --temp-color: #38ff9c;
+    --temp-glow: rgba(56, 255, 156, 0.58);
+    --fill-height: 37.5%;
+    --knob-top: 143.25px;
+    --temp-text: "60°";
+    --status-text: "MEDIUM";
+}
+
+.thermo-card #thermo-t70:checked ~ .thermo-ui {
+    --temp-color: #38ff9c;
+    --temp-glow: rgba(56, 255, 156, 0.58);
+    --fill-height: 50%;
+    --knob-top: 119px;
+    --temp-text: "70°";
+    --status-text: "MEDIUM";
+}
+
+.thermo-card #thermo-t80:checked ~ .thermo-ui {
+    --temp-color: #38ff9c;
+    --temp-glow: rgba(56, 255, 156, 0.58);
+    --fill-height: 62.5%;
+    --knob-top: 94.75px;
+    --temp-text: "80°";
+    --status-text: "MEDIUM";
+}
+
+.thermo-card #thermo-t90:checked ~ .thermo-ui {
+    --temp-color: #ff3f4f;
+    --temp-glow: rgba(255, 63, 79, 0.62);
+    --fill-height: 75%;
+    --knob-top: 70.5px;
+    --temp-text: "90°";
+    --status-text: "HOT";
+}
+
+.thermo-card #thermo-t100:checked ~ .thermo-ui {
+    --temp-color: #ff3f4f;
+    --temp-glow: rgba(255, 63, 79, 0.62);
+    --fill-height: 87.5%;
+    --knob-top: 46.25px;
+    --temp-text: "100°";
+    --status-text: "HOT";
+}
+
+.thermo-card #thermo-t110:checked ~ .thermo-ui {
+    --temp-color: #ff3f4f;
+    --temp-glow: rgba(255, 63, 79, 0.62);
+    --fill-height: 100%;
+    --knob-top: 22px;
+    --temp-text: "110°";
+    --status-text: "HOT";
+}
+
+@media screen and (max-width: 480px) {
+    .thermo-card {
+        --card-width: 190px;
+        --card-height: 390px;
+        padding: 24px 16px 22px;
+    }
+}
+
+@media screen and (max-width: 340px) {
+    .thermo-card {
+        --card-width: 170px;
+        --card-height: 370px;
+        padding: 22px 14px 20px;
+    }
+}

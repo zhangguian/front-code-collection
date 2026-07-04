@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thermo Card</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Thermo Card</h1>
+        <p class="hint">Interactive thermostat temperature control</p>
+
+        <!-- From Uiverse.io by mamyapro123 -->
+        <div class="thermo-card">
+            <input type="radio" name="thermo-temp" id="thermo-t30" class="thermo-state" checked />
+            <input type="radio" name="thermo-temp" id="thermo-t40" class="thermo-state" />
+            <input type="radio" name="thermo-temp" id="thermo-t50" class="thermo-state" />
+            <input type="radio" name="thermo-temp" id="thermo-t60" class="thermo-state" />
+            <input type="radio" name="thermo-temp" id="thermo-t70" class="thermo-state" />
+            <input type="radio" name="thermo-temp" id="thermo-t80" class="thermo-state" />
+            <input type="radio" name="thermo-temp" id="thermo-t90" class="thermo-state" />
+            <input type="radio" name="thermo-temp" id="thermo-t100" class="thermo-state" />
+            <input type="radio" name="thermo-temp" id="thermo-t110" class="thermo-state" />
+
+            <div class="thermo-ui">
+                <div class="thermo-body">
+                    <div class="thermo-scale">
+                        <label for="thermo-t110" class="thermo-mark mark-110">110 <span></span></label>
+                        <label for="thermo-t100" class="thermo-mark mark-100">100 <span></span></label>
+                        <label for="thermo-t90" class="thermo-mark mark-90">90 <span></span></label>
+                        <label for="thermo-t80" class="thermo-mark mark-80">80 <span></span></label>
+                        <label for="thermo-t70" class="thermo-mark mark-70">70 <span></span></label>
+                        <label for="thermo-t60" class="thermo-mark mark-60">60 <span></span></label>
+                        <label for="thermo-t50" class="thermo-mark mark-50">50 <span></span></label>
+                        <label for="thermo-t40" class="thermo-mark mark-40">40 <span></span></label>
+                        <label for="thermo-t30" class="thermo-mark mark-30">30 <span></span></label>
+                    </div>
+
+                    <div class="thermo-track">
+                        <div class="thermo-mercury"></div>
+                    </div>
+
+                    <div class="thermo-click-zone">
+                        <label for="thermo-t110" class="thermo-hit hit-110"></label>
+                        <label for="thermo-t100" class="thermo-hit hit-100"></label>
+                        <label for="thermo-t90" class="thermo-hit hit-90"></label>
+                        <label for="thermo-t80" class="thermo-hit hit-80"></label>
+                        <label for="thermo-t70" class="thermo-hit hit-70"></label>
+                        <label for="thermo-t60" class="thermo-hit hit-60"></label>
+                        <label for="thermo-t50" class="thermo-hit hit-50"></label>
+                        <label for="thermo-t40" class="thermo-hit hit-40"></label>
+                        <label for="thermo-t30" class="thermo-hit hit-30"></label>
+                    </div>
+
+                    <div class="thermo-knob"></div>
+                </div>
+
+                <div class="thermo-readout">
+                    <div class="thermo-value"></div>
+                    <div class="thermo-label">CURRENT</div>
+                    <div class="thermo-status"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
