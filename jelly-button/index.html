@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jelly Button</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Jelly Button</h1>
+        <p class="hint">悬停变形+blob弹出，按下压缩</p>
+        
+        <button class="jelly-btn">
+            <span class="jelly-btn__text">Click me</span>
+            <span class="jelly-btn__blob jelly-btn__blob--1"></span>
+            <span class="jelly-btn__blob jelly-btn__blob--2"></span>
+            <span class="jelly-btn__blob jelly-btn__blob--3"></span>
+            <span class="jelly-btn__gloss"></span>
+
+            <svg class="jelly-btn__svg" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <defs>
+                    <filter id="jelly-goo">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"></feGaussianBlur>
+                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"></feColorMatrix>
+                        <feComposite in="SourceGraphic" in2="goo" operator="atop"></feComposite>
+                    </filter>
+                </defs>
+            </svg>
+        </button>
+    </div>
+</body>
+</html>
