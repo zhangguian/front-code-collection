@@ -1,0 +1,250 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.container {
+    text-align: center;
+    padding: 40px;
+}
+
+h1 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.hint {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    margin-bottom: 40px;
+}
+
+/* From Uiverse.io by chase2k25 */
+.button {
+    position: relative;
+    padding: 16px 36px;
+    font-size: 18px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #1a1a1a;
+    background: linear-gradient(135deg, #ddff00, #b7ff00);
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    overflow: hidden;
+    transition:
+        transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+        box-shadow 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+        background 0.5s ease;
+    box-shadow:
+        0 8px 24px rgba(187, 255, 0, 0.385),
+        0 4px 12px rgba(221, 255, 0, 0.296),
+        inset 0 0 10px rgba(255, 255, 255, 0.2);
+    outline: none;
+    z-index: 1;
+    transform: perspective(200px);
+}
+
+/* Shimmer effect */
+.button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transform: skewX(-20deg);
+    transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+}
+
+/* Glow pulse effect */
+.button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle,
+        rgba(229, 255, 0, 0.3) 10%,
+        transparent 10.01%
+    );
+    opacity: 0;
+    border-radius: 16px;
+    transform: scale(1.5);
+    transition:
+        opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Ripple effect */
+.button .ripple {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition:
+        width 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+        height 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    z-index: 0;
+}
+
+/* Hover state */
+.button:hover {
+    transform: perspective(200px) translateY(-6px) scale(1.05) rotateX(5deg);
+    background: linear-gradient(135deg, #eaff00, #e6ff44);
+    box-shadow:
+        0 12px 36px rgba(204, 255, 0, 0.5),
+        0 6px 16px rgba(231, 255, 46, 0.4),
+        inset 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.button:hover::before {
+    left: 100%;
+}
+
+.button:hover::after {
+    opacity: 1;
+    transform: scale(1);
+    animation: pulse 1.8s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button:hover .ripple {
+    width: 400px;
+    height: 400px;
+    opacity: 1;
+}
+
+/* Active state */
+.button:active {
+    transform: perspective(200px) translateY(2px) scale(0.95) rotateX(-5deg);
+    background: linear-gradient(135deg, #b3cc00, #9ccc00);
+    box-shadow:
+        0 4px 12px rgba(0, 255, 136, 0.2),
+        inset 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button:active .ripple {
+    width: 200px;
+    height: 200px;
+    opacity: 0.6;
+    transition:
+        width 0.3s ease,
+        height 0.3s ease,
+        opacity 0.3s ease;
+}
+
+/* Focus state */
+.button:focus {
+    outline: 3px solid #e8ff3a;
+    outline-offset: 6px;
+    box-shadow:
+        0 0 0 8px rgba(229, 255, 0, 0.4),
+        0 12px 36px rgba(208, 255, 0, 0.5);
+    transform: perspective(200px) scale(1.02) rotateX(2deg);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Text content */
+.button span {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    transition:
+        transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+        color 0.5s ease;
+}
+
+.button:hover span {
+    transform: scale(1.1) translateY(-2px);
+    color: #000;
+}
+
+.button:active span {
+    transform: scale(0.9) translateY(1px);
+    color: #111;
+}
+
+.button:focus span {
+    transform: scale(1.05);
+}
+
+/* Disabled state */
+.button:disabled {
+    background: linear-gradient(135deg, #555, #333);
+    color: #777;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: perspective(200px);
+    transition: all 0.3s ease;
+}
+
+.button:disabled::before,
+.button:disabled::after,
+.button:disabled .ripple {
+    display: none;
+}
+
+/* Pulse animation for glow */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Bounce animation for load */
+.button {
+    animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: perspective(200px) scale(0.7) rotateX(-20deg);
+        opacity: 0;
+    }
+    50% {
+        transform: perspective(200px) scale(1.1) rotateX(5deg);
+        opacity: 1;
+    }
+    100% {
+        transform: perspective(200px) scale(1) rotateX(0);
+        opacity: 1;
+    }
+}
