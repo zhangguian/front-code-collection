@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.container {
+    text-align: center;
+    padding: 40px;
+    max-width: 400px;
+}
+
+.container h1 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.container .hint {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    margin-bottom: 40px;
+}
+
+/* From Uiverse.io by Ashon-G */
+.card {
+    background: rgba(40, 40, 40, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 2px 4px 16px 0px rgba(248, 248, 248, 0.06) inset;
+}
+
+.card-inner {
+    height: 280px;
+    border-radius: 12px;
+    background: rgba(40, 40, 40, 0.7);
+    mask-image: radial-gradient(50% 50% at 50% 50%, black 0%, transparent 100%);
+    -webkit-mask-image: radial-gradient(50% 50% at 50% 50%, black 0%, transparent 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.icons-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    z-index: 10;
+}
+
+.icon-circle {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(248, 248, 248, 0.01);
+    box-shadow:
+        0px 0px 8px 0px rgba(248, 248, 248, 0.25) inset,
+        0px 32px 24px -16px rgba(0, 0, 0, 0.4);
+}
+
+.icon-circle.small {
+    width: 32px;
+    height: 32px;
+}
+
+.icon-circle.medium {
+    width: 48px;
+    height: 48px;
+}
+
+.icon-circle.large {
+    width: 64px;
+    height: 64px;
+}
+
+.icon {
+    color: white;
+}
+
+.icon-circle.small .icon {
+    width: 16px;
+    height: 16px;
+}
+
+.icon-circle.medium .icon {
+    width: 24px;
+    height: 24px;
+}
+
+.icon-circle.large .icon {
+    width: 32px;
+    height: 32px;
+}
+
+.scan-line {
+    position: absolute;
+    height: 160px;
+    width: 1px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: linear-gradient(to bottom, transparent, cyan, transparent);
+    animation: move 5s linear infinite;
+}
+
+@keyframes move {
+    0% { transform: translateX(-200px); }
+    100% { transform: translateX(200px); }
+}
+
+.card-title {
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-align: left;
+    padding: 0.5rem 0;
+}
+
+.card-desc {
+    color: rgba(163, 163, 163, 1);
+    font-size: 0.875rem;
+    text-align: left;
+}
