@@ -1,0 +1,32 @@
+# Folder Animation
+
+Interactive folder animation component
+
+## 描述
+点击/悬停文件夹时，封面打开并弹出纸张的3D动画效果
+
+## 技术实现
+- CSS transform 3D旋转动画
+- CSS变量管理颜色主题
+- checkbox实现状态切换
+- cubic-bezier缓动函数
+
+## 使用方法
+```html
+<label class="folder">
+    <input type="checkbox" class="folder__toggle" aria-label="Open folder" />
+    <span class="folder__shape">
+        <span class="folder__back"></span>
+        <span class="folder__papers">
+            <span class="paper paper--1"></span>
+            <span class="paper paper--2"></span>
+            <span class="paper paper--3"></span>
+        </span>
+        <span class="folder__front"></span>
+    </span>
+    <span class="folder__meta">
+        <span class="folder__title">Documents</span>
+        <span class="folder__count">128 items</span>
+    </span>
+</label>
+```
