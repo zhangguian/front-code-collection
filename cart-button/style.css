@@ -1,0 +1,179 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.container {
+    text-align: center;
+    padding: 40px;
+}
+
+.container h1 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.container .hint {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    margin-bottom: 40px;
+}
+
+/* From Uiverse.io by prikshit_1236 */
+.cart-toggle {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.cart-button {
+    background: linear-gradient(135deg, #2962ff, #1565c0);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    transition: all 0.3s ease;
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.2),
+        0 5px 15px rgba(41, 98, 255, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    animation: subtle-pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+.cart-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.15),
+        rgba(255, 255, 255, 0.05)
+    );
+    border-radius: 25px 25px 100px 100px;
+}
+
+.cart-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0)
+    );
+    pointer-events: none;
+}
+
+.cart-button:hover {
+    transform: translateZ(10px) rotateX(2deg) rotateY(2deg) scale(1.02);
+    background: linear-gradient(135deg, #3d7fff, #1976d2);
+    box-shadow:
+        0 4px 15px rgba(41, 98, 255, 0.4),
+        0 0 20px rgba(41, 98, 255, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.15) inset,
+        0 0 0 4px rgba(41, 98, 255, 0.1);
+    letter-spacing: 1px;
+}
+
+.cart-button:active {
+    transform: translateY(2px) translateZ(-5px);
+    box-shadow:
+        0 4px 15px rgba(41, 98, 255, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+.cart-icon {
+    display: inline-block;
+    margin-right: 8px;
+    transition: all 0.3s ease;
+    transform: translateZ(5px);
+}
+
+.cart-icon svg {
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+}
+
+.cart-button:hover .cart-icon svg {
+    transform: scale(1.1);
+}
+
+.progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.8);
+    width: 0;
+    transform: translateZ(2px);
+}
+
+@keyframes subtle-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(41, 98, 255, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(41, 98, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(41, 98, 255, 0); }
+}
+
+@keyframes addedToCart {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.4) rotate(45deg); }
+    100% { transform: scale(1) rotate(0); }
+}
+
+@keyframes progress {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
+
+.cart-toggle:checked + .cart-button {
+    pointer-events: none;
+    animation: addToCart 1.5s ease-in-out forwards;
+}
+
+@keyframes addToCart {
+    0% { pointer-events: none; opacity: 0.8; }
+    66% { background: linear-gradient(135deg, #2962ff, #1565c0); }
+    67% { background: linear-gradient(135deg, #00c853, #009624); }
+    100% { pointer-events: all; opacity: 1; }
+}
+
+.cart-toggle:checked + .cart-button .progress-bar {
+    animation: progress 1s ease-in-out;
+}
+
+.cart-toggle:checked + .cart-button .cart-icon {
+    animation: addedToCart 0.5s ease-in-out 1s;
+}
+
+.success {
+    background: linear-gradient(135deg, #00c853, #009624) !important;
+    transform: translateZ(5px);
+    box-shadow:
+        0 4px 15px rgba(0, 200, 83, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
