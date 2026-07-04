@@ -1,0 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.container {
+    text-align: center;
+    padding: 40px;
+}
+
+.container h1 {
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.container .hint {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    margin-bottom: 40px;
+}
+
+/* From Uiverse.io by monkey_8812 */
+.button {
+    --card-w: 160px;
+    --card-h: 48px;
+    width: var(--card-w);
+    height: var(--card-h);
+    border: 2px solid #333;
+    border-radius: 8px;
+    display: grid;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #222;
+    transition: transform 0.1s ease-in-out;
+    user-select: none;
+}
+
+.button:active {
+    transform: scale(0.95);
+}
+
+.button:hover .border {
+    opacity: 1;
+}
+
+.button:hover .bg {
+    animation-play-state: paused;
+    filter: grayscale(0);
+}
+
+.button:hover .bg::before {
+    animation-play-state: running;
+    opacity: 0.6;
+}
+
+.button:hover .text {
+    transform: skewX(-15deg);
+}
+
+.button:hover .svgBox {
+    opacity: 1;
+    width: 50px;
+}
+
+.bg {
+    --size: calc(max(var(--card-w), var(--card-h)) * 1.25);
+    width: var(--size);
+    height: var(--size);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: grayscale(1);
+    animation: rotateBg 14s linear infinite;
+    animation-play-state: running;
+}
+
+.bg::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: repeating-conic-gradient(
+        from 0deg at 50% 50%,
+        rgba(246, 194, 92, 0.75) 0deg,
+        rgba(246, 194, 92, 0.75) 15deg,
+        transparent 15deg,
+        transparent 30deg
+    );
+    opacity: 0.2;
+    transition: opacity 0.3s ease-in-out;
+    animation: rotateBgBefore 4s linear infinite;
+    animation-play-state: paused;
+}
+
+@keyframes rotateBg {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes rotateBgBefore {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.border {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 8px;
+    box-shadow: inset 0 0 16px 0 rgba(194, 194, 194, 0.75);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.content .text {
+    display: block;
+    font-size: 24px;
+    font-weight: 900;
+    color: #fff;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+}
+
+.content .svgBox {
+    width: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 2px;
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+}
+
+.content .svgLine {
+    position: relative;
+}
+
+.content .line {
+    stroke: #fff;
+    animation: animLine 0.6s linear infinite;
+}
+
+.content .svgLine:nth-child(1) {
+    transform: translateX(4px);
+}
+
+.content .svgLine:nth-child(3) {
+    transform: translateX(-4px);
+}
+
+.content .svgLine:nth-child(1) .line {
+    animation-delay: 0.2s;
+}
+
+.content .svgLine:nth-child(2) .line {
+    animation-delay: 0.1s;
+}
+
+@keyframes animLine {
+    0% {
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dashoffset: 120;
+    }
+}
